@@ -10,8 +10,8 @@ def show_prod():
                 prod,price = line.strip().split("|")
                 print(f"{prod}\t{price}")
 if ch==1:
-    password=input("Enter the password for owner login :")
-    if password=="owner123":
+    #password=input("Enter the password for owner login :")
+    #if password=="owner123":
         print("\nOwner Dashboard")
         print("-----------------")
         while(True):
@@ -34,8 +34,8 @@ if ch==1:
                  for line in f:
                   prod,price = line.strip().split("|")
                   if prod==id:
-                      remove_prod= prod
-                      break
+                    remove_prod= prod
+                    break
                 try:
                     with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt", "r") as file:
                        lines = file.readlines()
@@ -51,7 +51,7 @@ if ch==1:
             else:
                 print("Enterd Invalid Choise")
 
-    else:
+    #else:
         print("Invalid Login")
 #elif ch==2:
 else:
