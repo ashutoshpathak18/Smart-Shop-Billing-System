@@ -1,6 +1,7 @@
 #Smart Shop Billing system
 
-print("Welcome to Smart Shop")
+print("Welcome to Smart Shop🛒")
+print()
 print("Press 1 for owner Dashboard\nPress 2 for costumer Dashboard\n")
 ch=int(input())
 def show_prod():
@@ -30,7 +31,7 @@ if ch==1:
                 show_prod
                 remove_prod=""
                 id=input("Enter the name of product  to remove from product list")
-                with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt") as f:
+                with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt"w) as f:
                  for line in f:
                   prod,price = line.strip().split("|")
                   if prod==id:
