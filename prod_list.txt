@@ -14,3 +14,4 @@ Toothpaste|110
 Detergent|95
 Notebook|60
 Pen|10
+condom|40.0
