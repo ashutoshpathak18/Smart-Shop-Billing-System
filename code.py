@@ -24,11 +24,20 @@ if ch==1:
     if password=="owner123":
         print("\nOwner Dashboard")
         print("-----------------")
+
         while(True):
-            print("Press 1 to show Product list\nPress 2 to add new Product\nPress 3 to remove Product\nPress 4 to Exit :")
+            print("\nPress 1 to show Product list ")
+            print("Press 2 to add new Product")
+            print("Press 3 to remove Product")
+            print("Press 4 to Exit :")
+
             choice=int(input())
+
+            #Show Products
             if choice==1:
                 show_prod()
+
+            #Add Product
             elif choice==2:
                 name=input("Enter the Product name :")
                 price=float(input("Enter the price of the product :"))
