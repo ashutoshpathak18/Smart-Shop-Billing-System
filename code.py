@@ -39,32 +39,47 @@ if ch==1:
 
             #Add Product
             elif choice==2:
+
                 name=input("Enter the Product name :")
                 price=float(input("Enter the price of the product :"))
-                with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt", "a") as f:
+
+                with open(r"D:\GitHub\Smart-Shop-Billing-System\prod_list.txt", "a") as f:
                   f.write(f"{name}|{price}\n")
+
                 print("Product added successfully....✅\n")
 
+            #Remove Product
             elif choice==3:
-                show_prod
-                remove_prod=""
-                id=input("Enter the name of product  to remove from product list")
-                with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt") as f:
-                 for line in f:
-                  prod,price = line.strip().split("|")
-                  if prod==id:
-                    remove_prod= prod
-                    break
-                try:
-                    with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt", "r") as file:
-                       lines = file.readlines()
-                    with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt", "w") as file:
-                      for line in lines:
-                        if line != remove_prod:
-                            file.write(line) 
-                except FileNotFoundError:
-                    print("Product not found")
+                show_prod()
 
+                remove_prod = ""
+                id=input("Enter the name of product  to remove from product list")
+
+                try:
+                    with open(r"D:\GitHub\Smart-Shop-Billing-System\prod_list.txt", "r") as file:
+                       lines = file.readlines()
+
+                    with open(r"D:\GitHub\Smart-Shop-Billing-System\prod_list.txt", "w") as file:
+                        
+                        for line in lines:
+                            prod, price = line.strip().split("|")
+                           
+                            if prod.lower() != id.lower():   # case-insensitive match
+                                file.write(line)
+                            
+                            else:
+                                remove_prod = prod
+                   
+                    if remove_prod == "":
+                        print("Product not found ❌")
+                    
+                    else:
+                        print(f"{remove_prod} removed successfully ✅")
+                
+                except FileNotFoundError:
+                    print("File not found")
+
+                    
             elif choice==4:
                 break
             else:
