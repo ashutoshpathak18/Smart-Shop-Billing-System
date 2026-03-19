@@ -1,17 +1,26 @@
 #Smart Shop Billing system
 
-print("Welcome to Smart Shop🛒")
-print()
+print("Welcome to Smart Shop🛒\n")
 print("Press 1 for owner Dashboard\nPress 2 for costumer Dashboard\n")
+
 ch=int(input())
+
+#Function to show products
 def show_prod():
-    print("Product\t\tPrice")
-    with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt") as f:
+    print("\nProduct\t\tPrice")
+    try:
+        with open(r"D:\GitHub\Smart-Shop-Billing-System\prod_list.txt") as f:
             for line in f:
                 prod,price = line.strip().split("|")
                 print(f"{prod}\t{price}")
+    except FileNotFoundError:
+        print("Product file not found")
+
+#Owner Dashboard
+
 if ch==1:
-    password=input("Enter the password for owner login :")
+    password=input("Enter the password for owner login🧐 :")
+
     if password=="owner123":
         print("\nOwner Dashboard")
         print("-----------------")
@@ -31,7 +40,7 @@ if ch==1:
                 show_prod
                 remove_prod=""
                 id=input("Enter the name of product  to remove from product list")
-                with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt"w) as f:
+                with open("D:\GitHub\Smart-Shop-Billing-System\prod_list.txt") as f:
                  for line in f:
                   prod,price = line.strip().split("|")
                   if prod==id:
@@ -57,3 +66,4 @@ if ch==1:
 #elif ch==2:
 else:
     print("Entered invalid choise")
+
