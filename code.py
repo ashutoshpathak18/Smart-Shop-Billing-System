@@ -79,14 +79,19 @@ if ch==1:
                 except FileNotFoundError:
                     print("File not found")
 
-                    
+            #Exit Owner Dashboard        
             elif choice==4:
                 break
+
+            #Invalid Choise
             else:
                 print("Enterd Invalid Choise")
-
+    
+    #Invalid Login
     else:
         print("Invalid Login")
+
+        
 #elif ch==2:
 else:
     print("Entered invalid choise")
