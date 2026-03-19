@@ -91,8 +91,16 @@ if ch==1:
     else:
         print("Invalid Login")
 
-        
-#elif ch==2:
-else:
-    print("Entered invalid choise")
+#Costumer Dashboard
+elif ch==2:
+    print("\n🛒Costumer Dashboard🛒")
+    print("------------------------\n")
+
+    print("---Available Products---")
+    print("------------------------")
+    show_prod()
+    
+
+
+
 
