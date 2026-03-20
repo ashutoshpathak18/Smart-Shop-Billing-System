@@ -99,7 +99,18 @@ elif ch==2:
     print("---Available Products---")
     print("------------------------")
     show_prod()
-    
+
+    def show_cart():
+        print("\nProduct\t\tPrice\t\tQuantity\t\t")
+
+    while(True):
+        print("\nPress 1 to View your Cart")
+        print("Press 2 to Add Product")
+        print("Press 3 to Remove Product")
+        print("Press any other key to exit")
+
+
+
 
 
 
