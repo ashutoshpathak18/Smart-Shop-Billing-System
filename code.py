@@ -152,10 +152,18 @@ elif ch==2:
                           print("Product Added Successfully....✅")
                           found = True
                           break
+               
                 if not found:
                     print("Product not found....❌")
+           
             except FileNotFoundError:
                 print("Product file missing..🔍")
+
+        #Remove from Cart
+        elif ch==3:
+
+            name=input("\nEnter the name of the product to remove from the cart :")
+            
 
 
                     
