@@ -131,7 +131,36 @@ elif ch==2:
         
         #Add Produt to cart
         elif ch==2:
-            name=input("Enter the name of the product to add in")
+
+            name=input("Enter the name of the product to add in cart")
+            quant=int(input("Enter the quantity :"))
+
+            try:
+                found = False
+                with open(r"D:\GitHub\Smart-Shop-Billing-System\prod_list.txt") as f:
+                   
+                   for line in f:
+                      prod,price = line.strip().split("|")
+
+                      if prod.lower() == name.lower():
+                          price = float(price)
+                          total = price * quant
+
+                          with open("D:\GitHub\Smart-Shop-Billing-System\cart.txt","a") as f:
+                              f.write(f"{prod}|{price}|{quant}|{total}")
+
+                          print("Product Added Successfully....✅")
+                          found = True
+                          break
+                if not found:
+                    print("Product not found....❌")
+            except FileNotFoundError:
+                print("Product file missing..🔍")
+
+
+                    
+
+                      
 
 
 
