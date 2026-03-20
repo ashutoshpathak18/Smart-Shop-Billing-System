@@ -12,7 +12,7 @@ def show_prod():
         with open(r"D:\GitHub\Smart-Shop-Billing-System\prod_list.txt") as f:
             for line in f:
                 prod,price = line.strip().split("|")
-                print(f"{prod}\t{price}")
+                print(f"{prod}\t\t{price}")
     except FileNotFoundError:
         print("Product file not found")
 
@@ -100,14 +100,40 @@ elif ch==2:
     print("------------------------")
     show_prod()
 
+    #Show costumer cart function
     def show_cart():
-        print("\nProduct\t\tPrice\t\tQuantity\t\t")
+        print("\nProduct\t\tPrice\t\tQuantity\t\tTotal")
+
+        try:
+        
+            with open(r"D:\GitHub\Smart-Shop-Billing-System\cart.txt") as f:
+        
+                for line in f:
+                    prod,price,quan,tot = line.strip().split("|")
+                    print(f"{prod}\t\t{price}\t\t{quan}\t\t{tot}")
+        
+        except FileNotFoundError:
+            print("Product file not found")
+
 
     while(True):
+
         print("\nPress 1 to View your Cart")
         print("Press 2 to Add Product")
         print("Press 3 to Remove Product")
         print("Press any other key to exit")
+
+        ch=int(input())
+
+        #show cart
+        if ch==1:
+            show_cart()
+        
+        #Add Produt to cart
+        elif ch==2:
+            name=input("Enter the name of the product to add in")
+
+
 
 
 
