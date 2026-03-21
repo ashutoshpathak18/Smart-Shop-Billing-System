@@ -1,4 +1,21 @@
 #Smart Shop Billing system
+import qrcode
+import qrcode.image.pil
+
+#bill qr generating function
+def generate_qr(amount):
+    upi_id = "pathakashutosh679@ybl"  
+    name = "SmartShop"
+
+    upi_url = f"upi://pay?pa={upi_id}&pn={name}&am={amount}&cu=INR"
+
+    qr = qrcode.QRCode()
+    qr.add_data(upi_url)
+    qr.make()
+
+    print("\nScan this QR to pay:\n")
+    qr.print_ascii(invert=True)
+
 
 print("Welcome to Smart Shop🛒\n")
 print("Press 1 for owner Dashboard\nPress 2 for costumer Dashboard\n")
@@ -121,6 +138,7 @@ elif ch==2:
         print("\nPress 1 to View your Cart")
         print("Press 2 to Add Product")
         print("Press 3 to Remove Product")
+        print("Press 4 to Generate bill")
         print("Press any other key to exit")
 
         ch=int(input())
@@ -147,7 +165,7 @@ elif ch==2:
                           total = price * quant
 
                           with open("D:\GitHub\Smart-Shop-Billing-System\cart.txt","a") as f:
-                              f.write(f"{prod}|{price}|{quant}|{total}")
+                              f.write(f"{prod}|{price}|{quant}|{total}\n")
 
                           print("Product Added Successfully....✅")
                           found = True
@@ -187,11 +205,38 @@ elif ch==2:
             except FileNotFoundError:
                 print("Cart file not found") 
         
+        elif ch==4:
+            print("\nSmart Shop 🏪\nTotal Bill 📜")
+            print("--------------------")
+            total_bill = 0
+            try:
+                with open(r"D:\GitHub\Smart-Shop-Billing-System\cart.txt") as f:
+                    
+                    for line in f:
+                        
+                        prod, price, quant, tot = line.strip().split("|")
+                        total_bill += float(tot)
+                        
+                    gst = total_bill * 0.18
+                    final_bill = total_bill + gst
+                    
+                    show_cart()
+                    print("_______________________________________________________________________")
+                    print("Total Amount\t\t\t\t\t",total_bill)
+                    print("GST (18%)\t\t\t\t\t",gst)
+                    print("Final Amount\t\t\t\t\t",final_bill)
+                    generate_qr(final_bill)
+
+            except FileNotFoundError:
+                print("Cart is empty...🛒")
+        
         #Exit costumer dashboard
         else:
             break
-        
 
+
+
+        
 
                     
 
