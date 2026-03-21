@@ -162,8 +162,35 @@ elif ch==2:
         #Remove from Cart
         elif ch==3:
 
+            show_cart()
+            remove_prod = ""
+
             name=input("\nEnter the name of the product to remove from the cart :")
             
+            try:
+                with open(r"D:\GitHub\Smart-Shop-Billing-System\cart.txt", "r") as file:
+                    lines = file.readlines()
+
+                with open(r"D:\GitHub\Smart-Shop-Billing-System\cart.txt", "w") as file:
+                    for line in lines:
+                        prod, price, quant, tot = line.strip().split("|")
+
+                        if prod.lower() != name.lower(): #case sensitive match
+                            file.write(line)
+                        else:
+                            remove_prod = prod
+
+                    if remove_prod == "":
+                        print("Product not found in the cart ❌")
+                    else:
+                        print(f"{remove_prod} removed successfully from the cart ✅")
+            except FileNotFoundError:
+                print("Cart file not found") 
+        
+        #Exit costumer dashboard
+        else:
+            break
+        
 
 
                     
