@@ -4,7 +4,7 @@ import qrcode.image.pil
 
 #bill qr generating function
 def generate_qr(amount):
-    upi_id = "pathakashutosh679@ybl"  
+    upi_id = "pathakashutosh679@okaxis"  
     name = "SmartShop"
 
     upi_url = f"upi://pay?pa={upi_id}&pn={name}&am={amount}&cu=INR"
