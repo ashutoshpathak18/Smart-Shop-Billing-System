@@ -1,6 +1,5 @@
 #Smart Shop Billing system
 import qrcode
-import qrcode.image.pil
 
 #bill qr generating function
 def generate_qr(amount):
@@ -14,7 +13,7 @@ def generate_qr(amount):
     qr.make()
 
     print("\nScan this QR to pay:\n")
-    qr.print_ascii(invert=True)
+    qr.print_ascii()
 
 
 print("Welcome to Smart Shop🛒\n")
